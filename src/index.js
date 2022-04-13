@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const usuarioRoute = require('./routes/usuarioRoute');
 require('dotenv').config();
 const { port } = require('./constants');
 
@@ -16,6 +17,16 @@ mongoose.connect(process.env.MONGO_URI)
     console.log('Error: ', err);
   });
 //End Conexion a BD
+
+//permite content json
+app.use(express.json());
+
+//middleware
+app.use('/api', usuarioRoute);
+
+app.get('/status', (req, res) => {
+  res.send('App listening');
+});
 
 app.listen(port, () => {
   console.log(`Server listening on port:  ${app.get('port')}`);
