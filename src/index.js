@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const usuarioRoute = require('./routes/usuarioRoute');
+const routes = require('./routes');
 require('dotenv').config();
 const { port } = require('./constants');
 
@@ -22,11 +22,7 @@ mongoose.connect(process.env.MONGO_URI)
 app.use(express.json());
 
 //middleware
-app.use('/api', usuarioRoute);
-
-app.get('/status', (req, res) => {
-  res.send('App listening');
-});
+app.use('/api', routes);
 
 app.listen(port, () => {
   console.log(`Server listening on port:  ${app.get('port')}`);
