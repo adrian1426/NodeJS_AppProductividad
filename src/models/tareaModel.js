@@ -34,7 +34,7 @@ const tarea ={
         }
     },
     usuario:{
-        type: Schema.Types.ObjectId, 
+        type: mongoose.Schema.Types.ObjectId, 
         ref: 'Usuario'
     },
     createdAt: { 

@@ -1,5 +1,11 @@
+const tareaModel = require('../models/tareaModel');
+
 const addTarea=(req,res)=>{
-    return res.send('aAgregar tarea');
+    const tarea= tareaModel(req.body);
+
+    tarea.save()
+    .then(() => res.status(201).json(tarea))
+    .catch(err => res.status(400).json({ error: err }));
 };
 
 const getTarea=(req,res)=>{
