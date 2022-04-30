@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const routes = require('./routes');
 require('dotenv').config();
 const { port } = require('./constants');
@@ -17,6 +18,9 @@ mongoose.connect(process.env.MONGO_URI)
     console.log('Error: ', err);
   });
 //End Conexion a BD
+
+//enable cors
+app.use(cors());
 
 //permite content json
 app.use(express.json());

@@ -1,4 +1,4 @@
-const { skipDefault, limitDefault, idStatusAll, idTiempo1, idTiempo2, idTiempo3, tiempo1, tiempo2, tiempo3 } = require('../constants');
+const { skipDefault, limitDefault, idStatusAll, tiempo1, tiempo2, tiempo3 } = require('../constants');
 const tareaModel = require('../models/tareaModel');
 
 const addTarea = (req, res) => {
