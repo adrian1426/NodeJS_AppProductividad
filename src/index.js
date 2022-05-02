@@ -7,7 +7,7 @@ const { port } = require('./constants');
 
 //inicializando servidor
 const app = express();
-app.set('port', process.env.PORT || port);
+const PORT = process.env.PORT || port;
 
 //Conexion a BD
 mongoose.connect(process.env.MONGO_URI)
@@ -28,6 +28,6 @@ app.use(express.json());
 //middleware
 app.use('/api', routes);
 
-app.listen(port, () => {
-  console.log(`Server listening on port:  ${app.get('port')}`);
+app.listen(PORT, () => {
+  console.log(`Server listening on port:  ${PORT}`);
 });
