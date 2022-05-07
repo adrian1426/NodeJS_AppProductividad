@@ -41,7 +41,26 @@ const getTareaByUserId = (req, res) => {
         .catch(err => res.status(400).json({ error: err }));
 };
 
+const updateTareaById = (req, res) => {
+    const { idTarea } = req.params;
+    const { descripcion, estatus, tiempo } = req.body;
+
+    tareaModel.updateOne({ _id: idTarea }, { $set: { descripcion, estatus, tiempo } })
+        .then(data => res.status(200).json(data))
+        .catch(err => res.status(404).json({ error: err }));
+};
+
+const deleteTareaById = (req, res) => {
+    const { idTarea } = req.params;
+
+    tareaModel.deleteOne({ _id: idTarea })
+        .then(data => res.status(200).json(data))
+        .catch(err => res.status(400).json({ error: err }));
+};
+
 module.exports = {
     addTarea,
-    getTareaByUserId
+    getTareaByUserId,
+    updateTareaById,
+    deleteTareaById
 };
